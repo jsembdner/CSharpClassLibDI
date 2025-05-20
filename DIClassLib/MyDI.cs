@@ -1,5 +1,6 @@
-using DIClassLib;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace DIClassLib;
 
 internal static class DependencyInjection
 {
