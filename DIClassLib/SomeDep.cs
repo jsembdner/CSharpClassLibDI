@@ -2,5 +2,5 @@ namespace DIClassLib;
 
 internal class SomeDep
 {
-    public string World { get { return "World"; } }
+    public virtual string World { get { return "World"; } }
 }
