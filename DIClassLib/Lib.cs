@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace DIClassLib;
+﻿namespace DIClassLib;
 
 public interface ILib
 {
