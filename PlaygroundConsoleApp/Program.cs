@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 builder.Services
     .AddServiceLayer()
-    .AddHostedService<UsesLib>();
+    .AddHostedService<UsesLibService>();
 
 using IHost host = builder.Build();
 

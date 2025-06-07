@@ -1,6 +1,6 @@
 namespace DIClassLib;
 
-internal class SomeDep
+internal class LibDep
 {
     public virtual string World { get { return "World"; } }
 }

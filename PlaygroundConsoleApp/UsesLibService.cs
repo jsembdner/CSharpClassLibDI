@@ -2,7 +2,7 @@
 using DIClassLib;
 using Microsoft.Extensions.Hosting;
 
-internal class UsesLib(IMyLib lib) : BackgroundService
+internal class UsesLibService(ILib lib) : BackgroundService
 {
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {

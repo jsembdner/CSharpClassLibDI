@@ -3,12 +3,12 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DIClassLib;
 
-public static class DependencyInjection
+public static class LibDI
 {
     public static IServiceCollection AddServiceLayer(this IServiceCollection services)
     {
-        services.TryAddTransient<SomeDep>();
-        services.TryAddTransient<IMyLib, MyLib>();
+        services.TryAddTransient<LibDep>();
+        services.TryAddTransient<ILib, Lib>();
         return services;
     }
 }

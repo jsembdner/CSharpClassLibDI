@@ -2,14 +2,14 @@
 
 namespace DIClassLib;
 
-public interface IMyLib
+public interface ILib
 {
     public string Hello();
 }
 
-internal class MyLib(SomeDep dep) : IMyLib
+internal class Lib(LibDep dep) : ILib
 {
-    private readonly SomeDep dep = dep;
+    private readonly LibDep dep = dep;
 
     public string Hello()
     {
