@@ -2,22 +2,17 @@
 
 namespace DIClassLib;
 
-public class MyLib
+public interface IMyLib
 {
-    private readonly SomeDep dep;
+    public string Hello();
+}
 
-    public MyLib() : this(DependencyInjection.AddServiceLayer())
-    {
-
-    }
-
-    internal MyLib(ServiceProvider provider)
-    {
-        this.dep = provider.GetRequiredService<SomeDep>();
-    }
+internal class MyLib(SomeDep dep) : IMyLib
+{
+    private readonly SomeDep dep = dep;
 
     public string Hello()
     {
-        return this.dep.World;
+        return dep.World;
     }
 }

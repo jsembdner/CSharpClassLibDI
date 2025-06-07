@@ -1,13 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DIClassLib;
 
-internal static class DependencyInjection
+public static class DependencyInjection
 {
-    public static ServiceProvider AddServiceLayer()
+    public static IServiceCollection AddServiceLayer(this IServiceCollection services)
     {
-        var services = new ServiceCollection();
-        services.AddSingleton<SomeDep>();
-        return services.BuildServiceProvider();
+        services.TryAddTransient<SomeDep>();
+        services.TryAddTransient<IMyLib, MyLib>();
+        return services;
     }
 }

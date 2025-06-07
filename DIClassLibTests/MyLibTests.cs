@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using DIClassLib;
+using Microsoft.Extensions.Hosting;
 
 namespace DIClassLibTests;
 
@@ -9,9 +10,13 @@ public class MyLibTests
     [Test]
     public void TestPropertyWithoutMock()
     {
-        var myLib = new MyLib();
+        HostApplicationBuilder builder = Host.CreateApplicationBuilder();
+        builder.Services
+            .AddServiceLayer();
+        using IHost host = builder.Build();
+        var lib = host.Services.GetRequiredService<IMyLib>();
 
-        Assert.That(myLib.Hello(), Is.EqualTo("World"));
+        Assert.That(lib.Hello(), Is.EqualTo("World"));
     }
 
     [Test]
@@ -20,11 +25,13 @@ public class MyLibTests
         var someDepMock = new Mock<SomeDep>();
         someDepMock.Setup(x => x.World).Returns("Mock");
 
-        var services = new ServiceCollection();
-        services.AddSingleton(someDepMock.Object);
+        HostApplicationBuilder builder = Host.CreateApplicationBuilder();
+        builder.Services
+            .AddServiceLayer();
+        builder.Services.AddSingleton(someDepMock.Object);
+        using IHost host = builder.Build();
+        var lib = host.Services.GetRequiredService<IMyLib>();
 
-        var myLib = new MyLib(services.BuildServiceProvider());
-
-        Assert.That(myLib.Hello(), Is.EqualTo("Mock"));
+        Assert.That(lib.Hello(), Is.EqualTo("Mock"));
     }
 }
