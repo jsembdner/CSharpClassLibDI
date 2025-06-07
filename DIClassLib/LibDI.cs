@@ -5,7 +5,7 @@ namespace DIClassLib;
 
 public static class LibDI
 {
-    public static IServiceCollection AddServiceLayer(this IServiceCollection services)
+    public static IServiceCollection AddLib(this IServiceCollection services)
     {
         services.TryAddTransient<LibDep>();
         services.TryAddTransient<ILib, Lib>();

@@ -12,7 +12,7 @@ public class LibTests
     {
         HostApplicationBuilder builder = Host.CreateApplicationBuilder();
         builder.Services
-            .AddServiceLayer();
+            .AddLib();
         using IHost host = builder.Build();
         var lib = host.Services.GetRequiredService<ILib>();
 
@@ -27,7 +27,7 @@ public class LibTests
 
         HostApplicationBuilder builder = Host.CreateApplicationBuilder();
         builder.Services
-            .AddServiceLayer();
+            .AddLib();
         builder.Services.AddSingleton(someDepMock.Object);
         using IHost host = builder.Build();
         var lib = host.Services.GetRequiredService<ILib>();

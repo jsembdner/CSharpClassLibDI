@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
+HostApplicationBuilder builder = Host.CreateApplicationBuilder();
 builder.Services
-    .AddServiceLayer()
+    .AddLib()
     .AddHostedService<UsesLibService>();
 
 using IHost host = builder.Build();
